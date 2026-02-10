@@ -477,39 +477,112 @@ def diagnose(gejala_input_kg_names, Z, maps, top_k=5,
     return main, conf_pct, topk
 
 # =========================
-# PAGES (tanpa sidebar)
+# KONTEN HALAMAN PATOGEN
 # =========================
+
 PATOGEN_CONTENT = {
+
     "Virus": {
         "judul": "VIRUS — Penyebab Penyakit Tembakau",
+        "penyakit": [
+            "Virus mosaik tembakau (TMV)",
+            "Virus mosaik mentimun (CMV)",
+            "Virus kerupuk (TLCV)"
+        ],
         "isi": [
-            "Virus tembakau merupakan parasit obligat non-seluler (umumnya RNA) yang menyerang sel tanaman.",
-            "Gejala umum dapat berupa pola mosaik pada daun, daun keriting/cacat bentuk, pertumbuhan kerdil, hingga nekrosis.",
-            "Penanganan berfokus pada pencegahan: varietas tahan, sanitasi alat/tangan, pengendalian vektor (kutu daun/thrips), serta pencabutan tanaman sakit."
+            "Virus merupakan parasit obligat non-seluler (umumnya RNA) yang hanya dapat berkembang di dalam sel tanaman.",
+            "Infeksi virus biasanya menyebabkan gangguan fisiologis pada daun, seperti pola mosaik hijau tua–muda, daun keriting, serta pertumbuhan tanaman yang kerdil.",
+            "Penanganan lebih difokuskan pada pencegahan, seperti penggunaan bibit sehat, sanitasi alat pertanian, serta pengendalian serangga vektor (kutu daun, thrips)."
+        ],
+        "gejala_umum": [
+            "Daun mosaik kontras hijau tua–muda",
+            "Daun mengkerut atau keriting",
+            "Pertumbuhan tanaman terhambat (kerdil)",
+            "Penyakit cepat menyebar"
+        ],
+        "pencegahan": [
+            "Gunakan varietas tahan bila tersedia",
+            "Cabut tanaman terinfeksi berat",
+            "Sterilisasi alat dan tangan setelah kontak tanaman sakit",
+            "Kendalikan serangga vektor"
         ]
     },
+
     "Bakteri": {
         "judul": "BAKTERI — Penyebab Penyakit Tembakau",
+        "penyakit": [
+            "Layu bakteri (Granville wilt)",
+            "Hawar api (Wildfire)"
+        ],
         "isi": [
-            "Bakteri patogen dapat menginfeksi jaringan tanaman melalui luka atau stomata dan berkembang pada kondisi lembap.",
-            "Gejala dapat berupa layu, busuk batang/akar, lendir pada pembuluh, serta perubahan warna jaringan.",
-            "Penanganan umumnya meliputi sanitasi lahan, pengaturan drainase, rotasi tanaman, dan penggunaan bibit sehat."
+            "Bakteri patogen dapat menginfeksi jaringan tanaman melalui luka atau stomata dan berkembang pesat pada kondisi lembap.",
+            "Infeksi bakteri sering menyerang pembuluh tanaman sehingga menyebabkan layu mendadak dan busuk jaringan.",
+            "Penanganan dilakukan dengan sanitasi lahan, pengaturan drainase, rotasi tanaman, serta penggunaan bibit sehat."
+        ],
+        "gejala_umum": [
+            "Daun layu menyeluruh",
+            "Pembuluh batang berlendir saat ditekan",
+            "Batang lunak, busuk, dan berbau",
+            "Pangkal batang menghitam"
+        ],
+        "pencegahan": [
+            "Gunakan bibit bebas penyakit",
+            "Perbaiki drainase lahan",
+            "Hindari luka pada tanaman",
+            "Rotasi tanaman dengan non-inang"
         ]
     },
+
     "Jamur": {
         "judul": "JAMUR — Penyebab Penyakit Tembakau",
+        "penyakit": [
+            "Lanas (Black shank)",
+            "Patik (Frogeye leaf spot)",
+            "Bercak target (Target spot)",
+            "Bercak cokelat berzona (Brown spot)",
+            "Rebah semai (Damping-off)",
+            "Batang berlubang (Hollow stalk)"
+        ],
         "isi": [
-            "Jamur berkembang pada kelembapan tinggi dan sering menimbulkan bercak daun, busuk, atau serbuk/spora pada permukaan daun.",
-            "Gejala bisa berupa bercak cincin (kosentris), bercak frogeye, hingga jaringan daun rusak/berlubang.",
-            "Pengendalian meliputi pemangkasan daun sakit, pengaturan jarak tanam/kelembapan, dan aplikasi fungisida sesuai anjuran."
+            "Jamur patogen berkembang pada kelembapan tinggi dan sering menimbulkan bercak daun, busuk batang, atau serbuk spora pada permukaan tanaman.",
+            "Gejala khas jamur biasanya berupa bercak cincin kosentris, bercak frogeye, serta kerusakan jaringan daun yang meluas.",
+            "Pengendalian dilakukan dengan pemangkasan bagian sakit, pengaturan jarak tanam, serta aplikasi fungisida sesuai anjuran."
+        ],
+        "gejala_umum": [
+            "Daun terdapat bercak cincin kecil atau besar",
+            "Bawah daun terdapat serbuk jamur",
+            "Bercak melebar dan menyatu",
+            "Daun kering, rapuh, berlubang"
+        ],
+        "pencegahan": [
+            "Kurangi kelembapan berlebih",
+            "Buang daun terinfeksi",
+            "Gunakan fungisida sesuai rekomendasi",
+            "Atur jarak tanam agar sirkulasi udara baik"
         ]
     },
+
     "Nematoda": {
         "judul": "NEMATODA — Penyebab Penyakit Tembakau",
+        "penyakit": [
+            "Nematoda puru akar (Root-knot nematode)"
+        ],
         "isi": [
-            "Nematoda adalah cacing mikroskopis yang menyerang akar dan dapat menyebabkan pembengkakan/benjolan pada akar.",
-            "Dampak lanjutan bisa berupa pertumbuhan terhambat, tanaman kerdil, dan layu pada siang hari.",
-            "Pengendalian meliputi rotasi tanaman, solarisasi tanah, bahan organik, dan varietas tahan bila tersedia."
+            "Nematoda merupakan cacing mikroskopis yang menyerang akar tanaman dan menyebabkan terbentuknya benjolan atau puru akar.",
+            "Serangan nematoda mengganggu penyerapan air dan nutrisi sehingga tanaman menjadi kerdil, lemah, dan mudah layu.",
+            "Pengendalian dilakukan dengan rotasi tanaman, solarisasi tanah, pemberian bahan organik, serta penggunaan varietas tahan."
+        ],
+        "gejala_umum": [
+            "Akar terdapat benjolan atau membengkak",
+            "Tanaman kerdil dan pertumbuhan terhambat",
+            "Daun layu pada siang hari",
+            "Akar membusuk"
+        ],
+        "pencegahan": [
+            "Rotasi tanaman dengan non-inang",
+            "Lakukan solarisasi tanah",
+            "Tambahkan bahan organik untuk memperbaiki tanah",
+            "Gunakan varietas tahan bila tersedia"
         ]
     }
 }
@@ -525,17 +598,57 @@ def topbar():
         unsafe_allow_html=True,
     )
 
-def page_patogen_detail(patogen_key: str):
-    topbar()
-    data = PATOGEN_CONTENT.get(patogen_key)
-    if not data:
-        st.error("Konten patogen tidak ditemukan.")
-        return
+# def page_patogen_detail(patogen_key: str):
+#     topbar()
+#     data = PATOGEN_CONTENT.get(patogen_key)
+#     if not data:
+#         st.error("Konten patogen tidak ditemukan.")
+#         return
 
-    st.markdown("<div class='hero-wrap'></div>", unsafe_allow_html=True)
+#     st.markdown("<div class='hero-wrap'></div>", unsafe_allow_html=True)
+#     st.markdown(f"## {data['judul']}")
+#     for p in data["isi"]:
+#         st.write(p)
+
+#     st.markdown("<br>", unsafe_allow_html=True)
+#     st.markdown('<div class="backbtn">', unsafe_allow_html=True)
+#     if st.button("← Kembali", key="back_home"):
+#         st.session_state.page = "home"
+#         st.rerun()
+#     st.markdown("</div>", unsafe_allow_html=True)
+
+def page_patogen_detail(patogen):
+    data = PATOGEN_CONTENT[patogen]
+
     st.markdown(f"## {data['judul']}")
+    st.write("")
+
+    # Box isi utama
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
     for p in data["isi"]:
-        st.write(p)
+        st.markdown(f"- {p}")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Penyakit terkait
+    st.markdown("### Penyakit dalam sistem yang disebabkan patogen ini")
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+    for d in data["penyakit"]:
+        st.markdown(f"• {d}")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Gejala umum
+    st.markdown("### Gejala umum yang sering muncul")
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+    for g in data["gejala_umum"]:
+        st.markdown(f"• {g}")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Pencegahan
+    st.markdown("### Penanganan dan pencegahan umum")
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+    for s in data["pencegahan"]:
+        st.markdown(f"• {s}")
+    st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown('<div class="backbtn">', unsafe_allow_html=True)
@@ -543,6 +656,7 @@ def page_patogen_detail(patogen_key: str):
         st.session_state.page = "home"
         st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 def page_home(nodes, edges, Z, maps, ui2kg, kg2ui, disease_ui):
     topbar()
@@ -676,7 +790,7 @@ def page_diagnosis(nodes, edges, Z, maps, ui2kg, kg2ui, disease_ui, focus=False)
     # Run diagnosis
     if run:
         if len(selected_ui) == 0:
-            st.warning("Pilih minimal 1 gejala terlebih dahulu.")
+            st.warning("Anda belum memilih gejala.")
             st.session_state.result_main = None
             st.session_state.result_conf = None
             st.session_state.result_topk = None
