@@ -842,7 +842,8 @@ def page_diagnosis(nodes, edges, Z, maps, ui2kg, kg2ui, disease_ui, focus=False)
 
         if main == UNKNOWN_LABEL:
             st.markdown(
-                f'<div class="result-bar">Unknown_Penyakit — {conf_val:.1f}%</div>',
+                f'<div class="result-bar">Penyakit tidak diketahui, perlu adanya pemeriksaan lebih lanjut</div>',
+                # f'<div class="result-bar">Unknown_Penyakit — {conf_val:.1f}%</div>',
                 unsafe_allow_html=True
             )
         else:
@@ -855,7 +856,7 @@ def page_diagnosis(nodes, edges, Z, maps, ui2kg, kg2ui, disease_ui, focus=False)
         # Top-3 (abaikan kalau topk kosong)
         if isinstance(topk, list) and len(topk) > 0:
             st.markdown('<div class="topk-wrap">', unsafe_allow_html=True)
-            st.markdown('<div class="topk-title">Top-3 penyakit lain yang mungkin</div>', unsafe_allow_html=True)
+            st.markdown('<div class="topk-title">Top-3 penyakit yang mungkin</div>', unsafe_allow_html=True)
 
             for i, r in enumerate(topk[:3], start=1):
                 display_name = disease_ui.get(r.get("penyakit"), r.get("penyakit"))
